@@ -25,9 +25,9 @@ public class AssetsController {
             this.assets = assets;
         }
 
-         public List<Integer> getAssets() {
-           return assets;
-         }
+       //  public List<Integer> getAssets() {
+       //     return assets;
+       //  }
 
     }
 }
