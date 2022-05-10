@@ -1,33 +1,25 @@
 package com.jackhare.budget.controllers;
 
+import com.jackhare.budget.services.AssetsServices;
+import com.jackhare.budget.services.dtos.AssetsDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import static java.util.Arrays.asList;
 
 @RestController
 @RequestMapping(value = "/assets")
 public class AssetsController {
 
+    @Autowired
+    private final AssetsServices assetsServices;
+
+    public AssetsController(AssetsServices assetsServices) {
+        this.assetsServices = assetsServices;
+    }
+
     @GetMapping
-    public Dto getAssets() {
-        var dto = new Dto();
-        dto.setAssets(asList(1,3,5));
-        return dto;
+    public AssetsDto getAssets() {
+          return assetsServices.getAllAssets();
     }
-    private class Dto {
-        private List<Integer> assets;
 
-       // public Dto() {
-       // }
-
-        public void setAssets(List<Integer> assets) {
-            this.assets = assets;
-        }
-
-       //  public List<Integer> getAssets() {
-       //     return assets;
-       //  }
-
-    }
 }
